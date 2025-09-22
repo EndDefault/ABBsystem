@@ -7,40 +7,48 @@
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
     mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
   </script>
+ 
+</script>
 </head>
+<style>
+  div:not(.skip){
+    width: 300px;
+    height: auto;
+    font-style: unset;
+    font-size: large;
+  }
+ 
+</style>
 <body>
-  <h1>스토리보드</h1>
+  <h1>로그인</h1>
 
-  <!-- md 파일 내용 대신 여기다 옮기면 됨 -->
+<div class="skip" style="text-align: center;">
+
 <pre class="mermaid">
 flowchart TD
 %%{init: {"theme":"default", "flowchart":{"htmlLabels": true}, "securityLevel":"loose"}}%%
 
-subgraph 로그인["로그인"]
-  %% 이미지 + 텍스트 라벨 (한 번만 정의)
-  Login["<img src='./Change_PW.png' width='160' style='display:block;margin:0 auto' /><div>로그인</div>"]
-  non_member(["비회원"])
-  Find["ID/PW 찾기"]
-  Mem["회원가입"]
-  y_member(["회원"])
-  non_member --> Mem --> Login
-  y_member --> Login
-  Login <--> Find
-end
+non_member(["비회원"])
+y_member(["회원"])
+
+non_member --> Mem --> Login
+y_member --> Login <--> Find["ID/PW찾기 페이지"]
+Find --> find_ID & find_PW & setMem
 
 Login --- login_success(["로그인 성공"]) --> Home
 
-%% 모양은 괄호로 지정 (hex는 미지원, 아래는 둥근 사각형)
-Home("Home")
 
-%% 스타일
+
 classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
 class login_success,non_member,y_member check;
 
-%% 클릭 링크 (Pages에서만 동작, 새 탭)
-click Login "https://enddefault.github.io/ABBsystem/login/login.html" "_blank"
-
-
+Login["<div><a href="./login_page.png"><img src='./login_page.png'/></a>로그인 페이지</div>"]
+find_ID["<div><a href="./find_ID.png"><img src="./find_ID.png" alt=""/></a>아이디 찾기</div>"]
+find_PW[<div><a href="./find_PW.png"><img src="./find_PW.png" alt=""/></a>비밀번호 찾기</div>]
+setMem[<div><a href="./find_PW.png"><img src="./find_PW.png" alt=""/></a>비밀번호 찾기</div>]
+Mem[<div><a href="./member.png"><img src="./member.png" alt=""/></a>회원가입</div>]
+Home[<a href="../index.html" style="font-size: xx-large;">home</a>]
 </pre>
+</div>
 </body>
 </html>
