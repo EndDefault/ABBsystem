@@ -14,27 +14,32 @@
   <!-- md 파일 내용 대신 여기다 옮기면 됨 -->
 <pre class="mermaid">
 flowchart TD
- %%{ init { "theme": "default", "flowchart": { "htmlLabels": true } } }%%
+%%{init: {"theme":"default", "flowchart":{"htmlLabels": true}, "securityLevel":"loose"}}%%
+
 subgraph 로그인["로그인"]
-	Login["로그인"]
-	non(["비회원"])
-	Find["ID/PW 찾기"]
-	Mem["회원가입"]
-	y_mem(["회원"])
-	non --> Mem --> Login
-	y_mem --> Login
-	Login <--> Find
+  %% 이미지 + 텍스트 라벨 (한 번만 정의)
+  Login["<img src='https://raw.githubusercontent.com/EndDefault/test1/main/login/Change_PW.png' width='160' style='display:block;margin:0 auto' /><div>로그인</div>"]
+  non_member(["비회원"])
+  Find["ID/PW 찾기"]
+  Mem["회원가입"]
+  y_member(["회원"])
+  non_member --> Mem --> Login
+  y_member --> Login
+  Login <--> Find
 end
- 로그인 --- login_success(["로그인 성공"]) --> Home
- Home["<div style='width:110px;height:70px;font-size:40px'> Home</div>"]
- Home@{ shape: hex}
 
-%%Z
-%%Z@{ shape: sm-circ}
-  Login[<img src="https://raw.githubusercontent.com/EndDefault/test1/main/login/Change_PW.png">로그인]
+Login --- login_success(["로그인 성공"]) --> Home
 
-	classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
-	class no-money,mem,admin,pay-fail,login_success,text,text1,text_1,y_mem,non,Q check;
+%% 모양은 괄호로 지정 (hex는 미지원, 아래는 둥근 사각형)
+Home("Home")
+
+%% 스타일
+classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
+class login_success,non_member,y_member check;
+
+%% 클릭 링크 (Pages에서만 동작, 새 탭)
+click Login "https://enddefault.github.io/ABBsystem/login/login.html" "_blank"
+
 
 </pre>
 </body>
