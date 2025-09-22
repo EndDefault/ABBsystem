@@ -3,11 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <title>스토리보드</title>
-  <!-- mermaid.js 불러오기 -->
   <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      securityLevel: "loose",        // HTML 라벨/이미지 쓰려면 필요
+      theme: "default",
+      flowchart: { htmlLabels: true } // v11에서도 사용 가능
+    });
   </script>
+  <style>body{max-width:1080px;margin:40px auto;padding:0 16px;font-family:system-ui,sans-serif}</style>
 </head>
 <body>
   <h1>스토리보드</h1>
