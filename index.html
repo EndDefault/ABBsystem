@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>스토리보드</title>
+  <!-- mermaid.js 불러오기 -->
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <h1>스토리보드</h1>
+
+  <!-- md 파일 내용 대신 여기다 옮기면 됨 -->
+  <pre class="mermaid">
+  flowchart TD
+    A[메인화면] --> B[로그인]
+    B --> C[대시보드]
+    C --> D[로그아웃]
+  </pre>
+</body>
+</html>
