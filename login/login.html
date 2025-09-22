@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>로그인</title>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <h1>스토리보드</h1>
+
+  <!-- md 파일 내용 대신 여기다 옮기면 됨 -->
+<pre class="mermaid">
+flowchart TD
+ %%{ init { "theme": "default", "flowchart": { "htmlLabels": true } } }%%
+subgraph 로그인["로그인"]
+	Login["로그인"]
+	non(["비회원"])
+	Find["ID/PW 찾기"]
+	Mem["회원가입"]
+	y_mem(["회원"])
+	non --> Mem --> Login
+	y_mem --> Login
+	Login <--> Find
+end
+ 로그인 --- login_success(["로그인 성공"]) --> Home
+ Home["<div style='width:110px;height:70px;font-size:40px'> Home</div>"]
+ Home@{ shape: hex}
+
+%%Z
+%%Z@{ shape: sm-circ}
+  Login[<img src="https://raw.githubusercontent.com/EndDefault/test1/main/login/Change_PW.png">로그인]
+
+	classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
+	class no-money,mem,admin,pay-fail,login_success,text,text1,text_1,y_mem,non,Q check;
+
+</pre>
+</body>
+</html>
