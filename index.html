@@ -13,11 +13,83 @@
   <h1>스토리보드</h1>
 
   <!-- md 파일 내용 대신 여기다 옮기면 됨 -->
-  <pre class="mermaid">
-  flowchart TD
-    A[메인화면] --> B[로그인]
-    B --> C[대시보드]
-    C --> D[로그아웃]
-  </pre>
+<pre class="mermaid">
+flowchart TD
+%%{ init { "theme": "default", "flowchart": { "htmlLabels": true } } }%%
+subgraph 로그인["로그인"]
+	Login["로그인"]
+	non(["비회원"])
+	Find["ID/PW 찾기"]
+	Mem["회원가입"]
+	y_mem(["회원"])
+	non --> Mem --> Login
+	y_mem --> Login
+	Login <--> Find
+end
+
+subgraph 복권["복권"]
+	lotto-page["복권 구매 페이지"]
+	Pay["복권결제"]
+	Auto["자동 생성"]
+	Passive["수동 선택"]
+	Semi-auto["반자동 생성"]
+	Pay --- pay-fail(["결제실패"]) -->
+	lotto-page --- Auto & Passive & Semi-auto --> Pay
+end
+pay-success(["구매 성공"])
+복권 --- no-money(["금액 부족"]) --> charging
+복권 --- pay-success --> MP_1
+MP_1 --> lotto-check["복권 당첨 확인"]
+
+subgraph 마이페이지["마이페이지"]
+	MP_1["구매복권이력"]
+	MP_2["마일리지"]
+	MP_3["충전금액"]
+	MP_4["회원탈퇴"]
+end
+MP_3 --> charging
+
+subgraph 커뮤니티["커뮤니티"]
+	Notice["공지사항"]
+	FAQ["FAQ"]
+	Board["게시판"]
+	mem(["회원"])
+	admin(["관리자"])
+	mem --> Board & FAQ
+	admin --> Notice & FAQ & Board
+	FAQ --> chating["관리자와 1:1 채팅"]
+	Board --> Comment["댓글"]
+end
+
+subgraph 판매점["판매점"]
+	Map["판매점 지도"]
+	choose["판매점 선택"]
+	Map --> choose
+end
+
+	Z --> Main["메인화면"] --- try-login(["로그인 시도"]) --> 로그인
+	로그인 --- text(["로그인성공"]) --> Main
+	Main --> 커뮤니티 & 복권 & 마이페이지 & 판매점
+	Main --> Q(["로그아웃"]) 
+	마이페이지 --> Board
+
+
+
+charging["충전페이지"]
+
+Main["<div style='width:150px;height:70px;font-size:40px'>메인화면</div>"]
+Z@{ shape: sm-circ}
+Main@{ shape: hex }
+
+style Z size:100
+
+%% 스타일 정의(한 번만)
+classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
+classDef col fill:#FFE0B2,font-size:30px;
+
+%% 여러 노드에 한 번에 적용
+class no-money,mem,admin,pay-fail,pay-success,text,text1,text_1,y_mem,non,Q,Auto,Passive,Semi-auto,try-login check;
+class 로그인,복권,마이페이지,커뮤니티,판매점 col;
+</pre>
 </body>
 </html>
