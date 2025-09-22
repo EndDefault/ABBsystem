@@ -4,15 +4,10 @@
   <meta charset="utf-8" />
   <title>스토리보드</title>
   <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({
-      startOnLoad: true,
-      securityLevel: "loose",        // HTML 라벨/이미지 쓰려면 필요
-      theme: "default",
-      flowchart: { htmlLabels: true } // v11에서도 사용 가능
-    });
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
   </script>
-  <style>body{max-width:1080px;margin:40px auto;padding:0 16px;font-family:system-ui,sans-serif}</style>
+  
 </head>
 <body>
   <h1>스토리보드</h1>
@@ -82,7 +77,6 @@ Main --> Q(["로그아웃"])
 마이페이지 --> Board
 
 charging["충전페이지"]
-
     
 %% 스타일 정의
 classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
@@ -93,5 +87,10 @@ class no_money,mem,admin,pay_fail,pay_success,text,y_member,non_member,Q,Auto,Pa
 class 로그인,복권,마이페이지,커뮤니티,판매점 col;
 
 </pre>
+<div>
+  <ul>
+    <li><a href="./login/login.html">로그인</a></li>
+  </ul>
+</div>
 </body>
 </html>
