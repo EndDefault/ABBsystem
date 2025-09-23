@@ -9,15 +9,39 @@
   </script>
   
 </head>
+<style>
+  ul {
+    display: flex;
+  }
+  li{
+    width: 100%;
+    height: 50px;
+    margin-right: 100px;
+    border: 1px solid black;
+    text-align: center;
+    font-size:x-large;
+    justify-self: center; 
+    line-height: 45px;
+  }
+</style>
 <body>
   <h1>스토리보드</h1>
-
-  <!-- md 파일 내용 대신 여기다 옮기면 됨 -->
+<div>
+  <ul>
+    <li><a href="./login/login.html">로그인</a></li>
+    <li><a href="./lotto/lotto.html">복권</a></li>
+    <li><a href="./myPage/myPage.html">마이페이지</a></li>
+    <li><a href="./community/community.html">커뮤니티</a></li>
+    <li><a href="./map/map.html">판매점</a></li>
+    <li><a href="./ABB.png">데이터베이스</a></li>
+  </ul>
+  <!-- https://www.erdcloud.com/ -->
+</div>
 <pre class="mermaid">
 flowchart TD
 %%{init: {"theme":"default","flowchart":{"htmlLabels": true},"securityLevel":"loose"}}%%
 
-subgraph 로그인["로그인"]
+subgraph 로그인[<div class="subgraph">로그인</div>]
   Login["로그인"]
   non_member(["비회원"])
   Find["ID/PW 찾기"]
@@ -70,7 +94,7 @@ subgraph 판매점["판매점"]
   Map --> choose
 end
 
-Z((Z)) --> Main["<div style='width:150px;height:70px;font-size:40px'>메인화면</div>"] --- try_login(["로그인 시도"]) --> 로그인
+Z(("시작")) --> Main["<div style='width:150px;height:70px;font-size:40px'>메인화면</div>"] --- try_login(["로그인 시도"]) --> 로그인
 로그인 --- text(["로그인성공"]) --> Main
 Main --> 커뮤니티 & 복권 & 마이페이지 & 판매점
 Main --> Q(["로그아웃"]) 
@@ -80,17 +104,14 @@ charging["충전페이지"]
     
 %% 스타일 정의
 classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
-classDef col fill:#FFE0B2,font-size:30px;
+classDef col fill:#FFE0B2,font-size:20px;
 
 %% 여러 노드에 일괄 적용
 class no_money,mem,admin,pay_fail,pay_success,text,y_member,non_member,Q,Auto,Passive,Semi_auto,try_login check;
 class 로그인,복권,마이페이지,커뮤니티,판매점 col;
 
+
 </pre>
-<div>
-  <ul>
-    <li><a href="./login/login.html">로그인</a></li>
-  </ul>
-</div>
+
 </body>
 </html>

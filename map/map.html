@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판매점</title>
+</head>
+<script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+<style>
+    div:not(.skip){
+        width: 200px;
+        height: auto;
+        font-style: unset;
+        font-size: large;
+        
+    }
+</style>
+<body>
+    <h1>판매점</h1>
+    <div class="skip" style="text-align: center;">
+        <pre class="mermaid">
+            flowchart TD
+            
+                Map["판매점 지도"]
+                choose["판매점 선택"]
+                Map --> choose
+
+        </pre>
+    </div>
+<div><a href="../index.html">메인</a></div>
+</body>
+</html>

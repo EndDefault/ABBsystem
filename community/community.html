@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티</title>
+</head>
+<script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+<style>
+    div:not(.skip){
+        width: 200px;
+        height: auto;
+        font-style: unset;
+        font-size: large;
+        
+    }
+</style>
+<body>
+    <h1>커뮤니티</h1>
+    <div class="skip" style="text-align: center;">
+        <pre class="mermaid">
+            flowchart TD
+                Notice["공지사항"]
+                FAQ["FAQ"]
+                Board["게시판"]
+                mem(["회원"])
+                admin(["관리자"])
+                mem --> Board & FAQ
+                admin --> Notice & FAQ & Board
+                FAQ --> chatting["관리자와 1:1 채팅"]
+                Board --> Comment["댓글"]
+
+                
+                classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
+                class no_money,mem,admin,pay_fail,pay_success,text,y_member,non_member,Q,Auto,Passive,Semi_auto,try_login check;
+
+        </pre>
+    </div>
+<div><a href="../index.html">메인</a></div>
+</body>
+</html>

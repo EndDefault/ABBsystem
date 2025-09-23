@@ -7,8 +7,6 @@
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
     mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
   </script>
- 
-</script>
 </head>
 <style>
   div:not(.skip){
@@ -35,19 +33,18 @@ non_member --> Mem --> Login
 y_member --> Login <--> Find["ID/PW찾기 페이지"]
 Find --> find_ID & find_PW & setMem
 
-Login --- login_success(["로그인 성공"]) --> Home
-
+Login --- login_success(["로그인 성공"]) --> Home --> Q(["로그아웃"])
 
 
 classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
-class login_success,non_member,y_member check;
+class login_success,non_member,y_member,Q check;
 
 Login["<div><a href="./login_page.png"><img src='./login_page.png'/></a>로그인 페이지</div>"]
 find_ID["<div><a href="./find_ID.png"><img src="./find_ID.png" alt=""/></a>아이디 찾기</div>"]
 find_PW[<div><a href="./find_PW.png"><img src="./find_PW.png" alt=""/></a>비밀번호 찾기</div>]
 setMem[<div><a href="./Change_PW.png"><img src="./Change_PW.png" alt=""/></a>비밀번호 변경</div>]
 Mem[<div><a href="./member.png"><img src="./member.png" alt=""/></a>회원가입</div>]
-Home[<a href="../index.html" style="font-size: xx-large;">home</a>]
+Home[<a href="../index.html" style="font-size: xx-large;">메인화면</a>]
 </pre>
 </div>
 </body>

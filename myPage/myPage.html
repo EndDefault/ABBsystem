@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+</head>
+<script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+<style>
+    div:not(.skip){
+        width: 200px;
+        height: auto;
+        font-style: unset;
+        font-size: large;
+        
+    }
+</style>
+<body>
+    <h1>마이페이지</h1>
+    <div class="skip" style="text-align: center;">
+        <pre class="mermaid">
+            flowchart TD
+            MP_1
+            MP_2["마일리지"]
+            MP_3["충전금액"]
+            MP_4["회원탈퇴"]  
+            
+            MP_3 --> charging["충전페이지"]
+            
+            charging["<div><a href="./charging.png"><img src='./charging.png'/></a>충전페이지</div>"]
+            MP_1["<div><a href="./pay_list.png"><img src='./pay_list.png'/></a>구매복권이력</div>"]
+            MP_3["<div><a href="./money.png"><img src='./money.png'/></a>구매복권이력</div>"]
+
+            classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
+            class no_money,mem,admin,pay_fail,pay_success,text,y_member,non_member,Q,Auto,Passive,Semi_auto,try_login check;
+
+        </pre>
+    </div>
+<div><a href="../index.html">메인</a></div>
+</body>
+</html>

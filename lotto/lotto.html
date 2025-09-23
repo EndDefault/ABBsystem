@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복권</title>
+</head>
+<script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+<style>
+    div:not(.skip){
+        width: 200px;
+        height: auto;
+        font-style: unset;
+        font-size: large;
+    }
+</style>
+<body>
+    <h1>복권</h1>
+<div class="skip" style="text-align: center;">
+<pre class="mermaid">
+flowchart TD
+%%{init: {"theme":"default", "flowchart":{"htmlLabels": true}, "securityLevel":"loose"}}%%
+
+lotto_page
+Pay["복권결제"]
+Auto["자동 생성"]
+Passive["수동 선택"]
+Semi_auto["반자동 생성"]
+pay_fail(["결제실패"])
+lotto_page --- Auto & Passive & Semi_auto --> Pay --- pay_fail & no_money(["금액 부족"]) & pay_success
+
+no_money(["금액 부족"])  --> charging
+pay_success --> MP_1
+MP_1 --> lotto_check
+
+charging["충전페이지"]
+MP_1[<div><a href="../myPage/myPage.html">구매복권이력</a></div>]
+pay_success(["구매 성공"])
+
+lotto_page["<div><a href="./lotto.png"><img src='./lotto.png'/></a>복권 구매 페이지</div>"]
+lotto_check["<div><a href="./check_num.png"><img src='./check_num.png'/></a>복권 당첨 확인</div>"]
+
+
+%% 스타일 정의
+classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
+
+%% 여러 노드에 일괄 적용
+class pay_fail,no_money,pay_success,Auto,Passive,Semi_auto check;
+
+</pre>
+</div>
+<div><a href="../index.html">메인</a></div>    
+</body>
+</html>
